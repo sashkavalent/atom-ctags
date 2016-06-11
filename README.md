@@ -20,6 +20,10 @@ and fork from [symbols-view](https://github.com/atom/symbols-view)
 
 ![atom-ctags](https://cloud.githubusercontent.com/assets/704762/3483867/e0bac2ee-0397-11e4-89c1-70689f6b8ff3.gif)
 
+**Patch point. Added file path (after # sign)**
+
+![atom-ctags](https://raw.githubusercontent.com/sashkavalent/atom-ctags/ae86105701b33baab99af2ca67046adfc7b8268b/Selection_2016-06-11-16%3A37%3A35-a34.png)
+
 # Install
 ```bash
 apm install https://github.com/sashkavalent/atom-ctags
