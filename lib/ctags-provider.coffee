@@ -4,13 +4,15 @@ checkSnippet = (tag)->
     return tag.pattern.substring(2, tag.pattern.length-2)
   if tag.kind == "function"
     return tag.pattern.substring(tag.pattern.indexOf(tag.name), tag.pattern.length-2)
-    
+
 tagToSuggestion = (tag)->
+  relativeFilePath = tag.file.replace("#{atom.project.rootDirectories[0].path}/", '')
+
   text: tag.name
-  displayText: tag.pattern.substring(2, tag.pattern.length-2)
+  displayText: "#{tag.pattern.substring(2, tag.pattern.length-2)} ##{relativeFilePath}"
   type: tag.kind
   snippet: checkSnippet(tag)
-    
+
 module.exports =
 class CtagsProvider
   selector: '*'
