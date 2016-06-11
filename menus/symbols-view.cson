@@ -4,7 +4,7 @@
     'submenu': [
       'label': 'Symbols'
       'submenu': [
-        { 'label': 'File Symbols', 'command': 'atom-ctags:toggle-file-symbols' }
+        { 'label': 'File Symbols', 'command': 'atom-ctags-with-file-path:toggle-file-symbols' }
       ]
     ]
   }
@@ -12,7 +12,7 @@
 
 'context-menu':
   'atom-text-editor': [
-    { label: 'Go to Declaration', command: 'atom-ctags:go-to-declaration' },
-    { label: 'Return From Declaration', command: 'atom-ctags:return-from-declaration' },
-    { label: 'Rebuild ctags', command: 'atom-ctags:rebuild' }
+    { label: 'Go to Declaration', command: 'atom-ctags-with-file-path:go-to-declaration' },
+    { label: 'Return From Declaration', command: 'atom-ctags-with-file-path:return-from-declaration' },
+    { label: 'Rebuild ctags', command: 'atom-ctags-with-file-path:rebuild' }
   ]

@@ -35,13 +35,13 @@ module.exports =
       @readTags(p, @extraTags)
 
   readTags: (p, container, callback) ->
-    console.log "[atom-ctags:readTags] #{p} start..."
+    console.log "[atom-ctags-with-file-path:readTags] #{p} start..."
     startTime = Date.now()
 
     stream = ctags.createReadStream(p)
 
     stream.on 'error', (error)->
-      console.error 'atom-ctags: ', error
+      console.error 'atom-ctags-with-file-path: ', error
 
     stream.on 'data', (tags)->
       for tag in tags
@@ -52,7 +52,7 @@ module.exports =
           container[tag.file] = data
         data.push tag
     stream.on 'end', ()->
-      console.log "[atom-ctags:readTags] #{p} cost: #{Date.now() - startTime}ms"
+      console.log "[atom-ctags-with-file-path:readTags] #{p} cost: #{Date.now() - startTime}ms"
       callback?()
 
   #options = { partialMatch: true, maxItems }
@@ -62,7 +62,7 @@ module.exports =
     return tags if @findOf(@extraTags, tags, prefix, options)
 
     #TODO: prompt in editor
-    console.warn("[atom-ctags:findTags] tags empty, did you RebuildTags or set extraTagFiles?") if tags.length == 0
+    console.warn("[atom-ctags-with-file-path:findTags] tags empty, did you RebuildTags or set extraTagFiles?") if tags.length == 0
     return tags
 
   findOf: (source, tags, prefix, options)->
@@ -79,13 +79,13 @@ module.exports =
     delete @cachedTags[p]
 
     startTime = Date.now()
-    console.log "[atom-ctags:rebuild] start @#{p}@ tags..."
+    console.log "[atom-ctags-with-file-path:rebuild] start @#{p}@ tags..."
 
-    cmdArgs = atom.config.get("atom-ctags.cmdArgs")
+    cmdArgs = atom.config.get("atom-ctags-with-file-path.cmdArgs")
     cmdArgs = cmdArgs.split(" ") if cmdArgs
 
     TagGenerator p, isAppend, @cmdArgs || cmdArgs, (tagpath) =>
-      console.log "[atom-ctags:rebuild] command done @#{p}@ tags. cost: #{Date.now() - startTime}ms"
+      console.log "[atom-ctags-with-file-path:rebuild] command done @#{p}@ tags. cost: #{Date.now() - startTime}ms"
 
       startTime = Date.now()
       @readTags(tagpath, @cachedTags, callback)

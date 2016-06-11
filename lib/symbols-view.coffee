@@ -10,7 +10,7 @@ class SymbolsView extends SelectListView
   initialize: (@stack) ->
     super
     @panel = atom.workspace.addModalPanel(item: this, visible: false)
-    @addClass('atom-ctags')
+    @addClass('atom-ctags-with-file-path')
 
   destroy: ->
     @cancel()

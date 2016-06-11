@@ -29,7 +29,7 @@ getProjectPath = (codepath) ->
 
 module.exports = (codepath, isAppend, cmdArgs, callback)->
   tags = []
-  command = atom.config.get("atom-ctags.cmd").trim()
+  command = atom.config.get("atom-ctags-with-file-path.cmd").trim()
   if command == ""
     command = path.resolve(__dirname, '..', 'vendor', "ctags-#{process.platform}")
   ctagsFile = require.resolve('./.ctags')
@@ -52,7 +52,7 @@ module.exports = (codepath, isAppend, cmdArgs, callback)->
   args.push('-u', '-R', '-f', genPath, codepath)
 
   stderr = (data)->
-    console.error("atom-ctags: command error, " + data, genPath)
+    console.error("atom-ctags-with-file-path: command error, " + data, genPath)
 
   exit = ->
     clearTimeout(t)
@@ -67,11 +67,11 @@ module.exports = (codepath, isAppend, cmdArgs, callback)->
 
   childProcess = new BufferedProcess({command, args, stderr, exit})
 
-  timeout = atom.config.get('atom-ctags.buildTimeout')
+  timeout = atom.config.get('atom-ctags-with-file-path.buildTimeout')
   t = setTimeout ->
     childProcess.kill()
     error """
     Stopped: Build more than #{timeout/1000} seconds, check if #{codepath} contain too many files.<br>
-            Suggest that add CmdArgs at atom-ctags package setting, example:<br>
+            Suggest that add CmdArgs at atom-ctags-with-file-path package setting, example:<br>
                 --exclude=some/path --exclude=some/other"""
   , timeout
