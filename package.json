@@ -1,6 +1,6 @@
 {
   "name": "atom-ctags-with-file-path",
-  "version": "4.5.2",
+  "version": "5.0.0",
   "main": "./lib/main",
   "description": "patched atom-ctags with file path in autocomplete",
   "keywords": [
@@ -11,7 +11,7 @@
   "dependencies": {
     "q": "^1.1.2",
     "atom-message-panel": "^1.1.1",
-    "ctags": "https://github.com/yongkangchen/node-ctags/archive/3.0.tar.gz",
+    "ctags": "https://github.com/yongkangchen/node-ctags/archive/4.0.tar.gz",
     "atom-space-pen-views": "^2.0.0"
   },
   "repository": "https://github.com/sashkavalent/atom-ctags",
